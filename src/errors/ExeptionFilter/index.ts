@@ -1,2 +1,2 @@
 export { ExeptionFilter } from './exeption.filter';
-export { IExeptionFilter } from './exeption.filter.interface';
+export { IExceptionFilter } from './exeption.filter.interface';

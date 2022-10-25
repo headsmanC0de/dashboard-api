@@ -1,0 +1,36 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-unused-vars": ["off"],
+		"@typescript-eslint/explicit-function-return-type": ["error"],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "lf",
+				"printWidth": 100,
+				"useTabs": true,
+				"tabWidth": 4,
+				"semi": true,
+				"trailingComma": "all",
+				"singleQuote": true,
+				"jsxSingleQuote": true,
+				"bracketSpacing": true,
+				"importOrder": ["<THIRD_PARTY_MODULES>", "^@/(.*)$", "^[./]"],
+				"singleAttributePerLine": true,
+				"importOrderGroupNamespaceSpecifiers": true,
+				"importOrderSeparation": true,
+				"importOrderSortSpecifiers": true,
+				"importOrderParserPlugins": ["typescript", "decorators-legacy"]
+			}
+		]
+	}
+}

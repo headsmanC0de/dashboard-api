@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import 'reflect-metadata';
 
 import { HTTPError } from '../../errors';
 import { ILogger } from '../../service';
@@ -10,8 +9,8 @@ import { IUserController } from './users.controller.interface';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
-	constructor(@inject(TYPES.ILogger) private loggerServise: ILogger) {
-		super(loggerServise);
+	constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
+		super(loggerService);
 
 		this.bindRoutes([
 			{ path: '/login', method: 'post', func: this.login },
@@ -19,12 +18,12 @@ export class UserController extends BaseController implements IUserController {
 		]);
 	}
 
-	login(req: Request, res: Response, next: NextFunction) {
+	login(req: Request, res: Response, next: NextFunction): void {
 		// this.ok(res, 'login');
 		next(new HTTPError(401, 'Error to login', 'Login'));
 	}
 
-	register(req: Request, res: Response, next: NextFunction) {
+	register(req: Request, res: Response, next: NextFunction): void {
 		this.ok(res, 'register');
 	}
 }

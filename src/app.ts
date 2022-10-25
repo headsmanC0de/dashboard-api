@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 
 import { UserController } from './controllers';
-import { IExeptionFilter } from './errors';
+import { IExceptionFilter } from './errors';
 import { ILogger } from './service/logger';
 import { TYPES } from './types';
 
@@ -17,24 +17,24 @@ export class App {
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
 		@inject(TYPES.UserController) private userController: UserController,
-		@inject(TYPES.IExeptionFilter) private exeptionFilter: IExeptionFilter
+		@inject(TYPES.IExceptionFilter) private exceptionFilter: IExceptionFilter,
 	) {
 		this.app = express();
 		this.port = 8000;
 	}
 
-	useRoutes() {
+	useRoutes(): void {
 		this.app.use('/users', this.userController.router);
 	}
 
-	useExeptionFilters() {
-		this.app.use(this.exeptionFilter.catch.bind(this.exeptionFilter));
+	useExeptionFilters(): void {
+		this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
 	}
 
-	public async init() {
+	public async init(): Promise<void> {
 		this.useRoutes();
 		this.useExeptionFilters();
 		this.server = this.app.listen(this.port);
-		this.logger.log(`Server succses started on http://localhost:${this.port}`);
+		this.logger.log(`Server success started on http://localhost:${this.port}`);
 	}
 }
