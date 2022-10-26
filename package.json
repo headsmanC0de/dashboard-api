@@ -15,8 +15,7 @@
 		"format": "prettier --write .",
 		"lint": "eslint ./src/**",
 		"lint:fix": "eslint ./src/** --fix",
-		"start": "node ./dist/index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node ./dist/index.js"
 	},
 	"dependencies": {
 		"express": "^4.18.2",
@@ -39,6 +38,10 @@
 		"typescript": "^4.8.4"
 	},
 	"_moduleAliases": {
-		"@controllers": "dist/controllers"
+		"@service": "dist/service",
+		"@controllers": "dist/controllers",
+		"@interface": "dist/interface",
+		"@errors": "dist/errors",
+		"@types": "dist/src/types"
 	}
 }

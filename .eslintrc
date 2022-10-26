@@ -24,7 +24,13 @@
 				"singleQuote": true,
 				"jsxSingleQuote": true,
 				"bracketSpacing": true,
-				"importOrder": ["<THIRD_PARTY_MODULES>", "^@(.*)$", "^[./]"],
+				"importOrder": [
+					"^module-alias/register$",
+					"^reflect-metadata$",
+					"<THIRD_PARTY_MODULES>",
+					"^@(.*)$",
+					"^[./]"
+				],
 				"singleAttributePerLine": true,
 				"importOrderGroupNamespaceSpecifiers": true,
 				"importOrderSeparation": true,

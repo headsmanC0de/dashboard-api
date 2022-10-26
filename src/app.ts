@@ -1,12 +1,13 @@
+import 'reflect-metadata';
+
 import express, { Express } from 'express';
 import { Server } from 'http';
 import { inject, injectable } from 'inversify';
-import 'reflect-metadata';
 
-import { UserController } from './controllers';
-import { IExceptionFilter } from './errors';
-import { ILogger } from './service/logger';
-import { TYPES } from './types';
+import { UserController } from '@controllers';
+import { IExceptionFilter } from '@errors';
+import { ILogger } from '@service';
+import { TYPES } from '@types';
 
 @injectable()
 export class App {
