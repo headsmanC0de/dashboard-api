@@ -1,10 +1,11 @@
 import { Container, ContainerModule, interfaces } from 'inversify';
+import 'module-alias/register';
 
 import { App } from './app';
 import { UserController } from './controllers';
 import { ExeptionFilter, IExceptionFilter } from './errors';
 import { IBootstrapReturn } from './interface';
-import { ILogger, LoggerService } from './service/logger';
+import { ILogger, LoggerService } from './service';
 import { TYPES } from './types';
 
 export const appBinding = new ContainerModule((bind: interfaces.Bind) => {
