@@ -1,2 +1,2 @@
-export { UserController } from './users.controller';
-export { IUserController } from './users.controller.interface';
+export { UsersController } from './users.controller';
+export { IUsersController } from './users.controller.interface';
