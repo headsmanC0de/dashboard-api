@@ -98,14 +98,17 @@
 
 		/* Completeness */
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-		"skipLibCheck": true /* Skip type checking all .d.ts files. */,
+		"skipLibCheck": true 									/* Skip type checking all .d.ts files. */,
 		"baseUrl": "./src",
 		"paths": {
 			"@service": ["service/index.ts"],
 			"@controllers": ["controllers/index.ts"],
 			"@interface": ["interface/index.ts"],
 			"@errors": ["errors/index.ts"],
-			"@types": ["types/index.ts"]
+			"@entity": ["entity/index.ts"],
+			"@types": ["types/index.ts"],
+			"@dto": ["dto/index.ts"],
+			"@middleware": ["middleware/index.ts"]
 		}
 	}
 }

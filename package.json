@@ -18,6 +18,8 @@
 		"start": "node ./dist/index.js"
 	},
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.20.1",
 		"express": "^4.18.2",
 		"inversify": "^6.0.1",
 		"reflect-metadata": "^0.1.13",
@@ -25,9 +27,12 @@
 	},
 	"devDependencies": {
 		"@trivago/prettier-plugin-sort-imports": "^3.3.1",
+		"@types/bcryptjs": "^2.4.2",
 		"@types/express": "^4.17.14",
 		"@typescript-eslint/eslint-plugin": "^5.41.0",
 		"@typescript-eslint/parser": "^5.41.0",
+		"class-transformer": "^0.5.1",
+		"class-validator": "^0.13.2",
 		"eslint": "^8.26.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
@@ -42,6 +47,9 @@
 		"@controllers": "dist/controllers",
 		"@interface": "dist/interface",
 		"@errors": "dist/errors",
-		"@types": "dist/src/types"
+		"@entity": "dist/src/entity",
+		"@types": "dist/src/types",
+		"@dto": "dist/src/dto",
+		"@middleware": "dist/src/middleware"
 	}
 }
