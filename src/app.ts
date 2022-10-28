@@ -8,18 +8,18 @@ import { inject, injectable } from 'inversify';
 import { UsersController } from '@controllers';
 import { IExceptionFilter } from '@errors';
 import { ILogger } from '@service';
-import { TYPES } from '@types';
+import { KEYS } from '@types';
 
 @injectable()
 export class App {
-	app: Express;
-	server: Server;
-	port: number;
+	public app: Express;
+	public server: Server;
+	public port: number;
 
 	constructor(
-		@inject(TYPES.ILogger) private logger: ILogger,
-		@inject(TYPES.UsersController) private usersController: UsersController,
-		@inject(TYPES.ExceptionFilter) private exceptionFilter: IExceptionFilter,
+		@inject(KEYS.ILogger) private logger: ILogger,
+		@inject(KEYS.UsersController) private usersController: UsersController,
+		@inject(KEYS.ExceptionFilter) private exceptionFilter: IExceptionFilter,
 	) {
 		this.app = express();
 		this.port = 8000;

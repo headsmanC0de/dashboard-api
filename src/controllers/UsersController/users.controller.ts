@@ -5,7 +5,7 @@ import { UserLoginDto, UserRegisterDto } from '@dto';
 import { HTTPError } from '@errors';
 import { ValidateMiddleware } from '@middleware';
 import { ILogger } from '@service';
-import { TYPES } from '@types';
+import { KEYS } from '@types';
 
 import { BaseController } from '../BaseController';
 import { UserService } from './../../service/users/user.service';
@@ -14,8 +14,8 @@ import { IUsersController } from './users.controller.interface';
 @injectable()
 export class UsersController extends BaseController implements IUsersController {
 	constructor(
-		@inject(TYPES.ILogger) logger: ILogger,
-		@inject(TYPES.UsersService) private userService: UserService,
+		@inject(KEYS.ILogger) logger: ILogger,
+		@inject(KEYS.UsersService) private userService: UserService,
 	) {
 		super(logger);
 
@@ -23,12 +23,12 @@ export class UsersController extends BaseController implements IUsersController 
 			{
 				path: '/login',
 				method: 'post',
-				func: this.login,
+				handler: this.login,
 			},
 			{
 				path: '/register',
 				method: 'post',
-				func: this.register,
+				handler: this.register,
 				middlewares: [new ValidateMiddleware(UserRegisterDto)],
 			},
 		]);

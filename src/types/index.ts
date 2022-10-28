@@ -1,4 +1,4 @@
-export const TYPES = {
+export const KEYS = {
 	Application: Symbol.for('Application'),
 	ILogger: Symbol.for('LoggerService'),
 	UsersController: Symbol.for('UsersController'),

@@ -1,6 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import { BaseController } from 'controllers/BaseController';
 
-export interface IUsersController {
-	login: (req: Request, res: Response, next: NextFunction) => void;
-	register: (req: Request, res: Response, next: NextFunction) => void;
+import { ControllerRouteHandler } from '@interface';
+
+export interface IUsersController extends BaseController {
+	login: ControllerRouteHandler;
+	register: ControllerRouteHandler;
 }
