@@ -14,6 +14,7 @@ import {
 	ILogger,
 	IUserService,
 	LoggerService,
+	PrismaService,
 	UserService,
 } from './service';
 
@@ -22,6 +23,7 @@ export const appBinding = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IExceptionFilter>(KEYS.ExceptionFilter).to(ExeptionFilter).inSingletonScope();
 	bind<IUsersController>(KEYS.UsersController).to(UsersController).inSingletonScope();
 	bind<IUserService>(KEYS.UsersService).to(UserService).inSingletonScope();
+	bind<PrismaService>(KEYS.PrismaService).to(PrismaService).inSingletonScope();
 	bind<IConfigService>(KEYS.ConfigService).to(ConfigService).inSingletonScope();
 	bind<App>(KEYS.Application).to(App);
 });

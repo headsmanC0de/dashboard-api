@@ -8,7 +8,7 @@ import { inject, injectable } from 'inversify';
 import { KEYS } from '@constants';
 import { IUsersController, UsersController } from '@controllers';
 import { IExceptionFilter } from '@errors';
-import { IConfigService, ILogger } from '@service';
+import { IConfigService, ILogger, PrismaService } from '@service';
 
 @injectable()
 export class App {
@@ -21,6 +21,7 @@ export class App {
 		@inject(KEYS.UsersController) private usersController: IUsersController,
 		@inject(KEYS.ExceptionFilter) private exceptionFilter: IExceptionFilter,
 		@inject(KEYS.ConfigService) private configService: IConfigService,
+		@inject(KEYS.PrismaService) private prismaService: PrismaService,
 	) {
 		this.app = express();
 		this.port = 8000;
@@ -42,6 +43,7 @@ export class App {
 		this.useMiddleware();
 		this.useRoutes();
 		this.useExeptionFilters();
+		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`[Server] Server success started on http://localhost:${this.port}`);
 	}

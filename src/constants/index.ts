@@ -5,4 +5,5 @@ export const KEYS = {
 	UsersService: Symbol.for('UsersService'),
 	ExceptionFilter: Symbol.for('ExeptionFilter'),
 	ConfigService: Symbol.for('ConfigService'),
+	PrismaService: Symbol.for('PrismaService'),
 };

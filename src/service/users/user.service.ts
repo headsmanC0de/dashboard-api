@@ -3,8 +3,8 @@ import { inject, injectable } from 'inversify';
 import { KEYS } from '@constants';
 import { UserLoginDto, UserRegisterDto } from '@dto';
 import { User } from '@entity';
+import { ConfigService } from '@service';
 
-import { ConfigService } from './../config/config.service';
 import { IUserService } from './user.service.interface';
 
 @injectable()
