@@ -1,3 +1,5 @@
+import { UsersRepository } from './../repository/users/users.repository';
+
 export const KEYS = {
 	Application: Symbol.for('Application'),
 	ILogger: Symbol.for('LoggerService'),
@@ -6,4 +8,5 @@ export const KEYS = {
 	ExceptionFilter: Symbol.for('ExeptionFilter'),
 	ConfigService: Symbol.for('ConfigService'),
 	PrismaService: Symbol.for('PrismaService'),
+	UsersRepository: Symbol.for('UsersRepository'),
 };

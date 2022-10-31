@@ -8,6 +8,7 @@ import { IBootstrapReturn } from '@interface';
 import { App } from './app';
 import { IUsersController, UsersController } from './controllers';
 import { ExeptionFilter, IExceptionFilter } from './errors';
+import { IUsersRepository, UsersRepository } from './repository';
 import {
 	ConfigService,
 	IConfigService,
@@ -25,6 +26,7 @@ export const appBinding = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IUserService>(KEYS.UsersService).to(UserService).inSingletonScope();
 	bind<PrismaService>(KEYS.PrismaService).to(PrismaService).inSingletonScope();
 	bind<IConfigService>(KEYS.ConfigService).to(ConfigService).inSingletonScope();
+	bind<IUsersRepository>(KEYS.UsersRepository).to(UsersRepository).inSingletonScope();
 	bind<App>(KEYS.Application).to(App);
 });
 

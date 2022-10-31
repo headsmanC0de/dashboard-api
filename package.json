@@ -52,6 +52,7 @@
 		"@interface": "dist/interface",
 		"@errors": "dist/errors",
 		"@entity": "dist/src/entity",
+		"@repository": "dist/src/repository",
 		"@constants": "dist/src/constants",
 		"@dto": "dist/src/dto",
 		"@middleware": "dist/src/middleware"
