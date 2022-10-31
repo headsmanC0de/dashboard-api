@@ -5,10 +5,10 @@ import express, { Express } from 'express';
 import { Server } from 'http';
 import { inject, injectable } from 'inversify';
 
-import { UsersController } from '@controllers';
+import { KEYS } from '@constants';
+import { IUsersController, UsersController } from '@controllers';
 import { IExceptionFilter } from '@errors';
-import { ILogger } from '@service';
-import { KEYS } from '@types';
+import { IConfigService, ILogger } from '@service';
 
 @injectable()
 export class App {
@@ -18,8 +18,9 @@ export class App {
 
 	constructor(
 		@inject(KEYS.ILogger) private logger: ILogger,
-		@inject(KEYS.UsersController) private usersController: UsersController,
+		@inject(KEYS.UsersController) private usersController: IUsersController,
 		@inject(KEYS.ExceptionFilter) private exceptionFilter: IExceptionFilter,
+		@inject(KEYS.ConfigService) private configService: IConfigService,
 	) {
 		this.app = express();
 		this.port = 8000;
@@ -42,6 +43,6 @@ export class App {
 		this.useRoutes();
 		this.useExeptionFilters();
 		this.server = this.app.listen(this.port);
-		this.logger.log(`Server success started on http://localhost:${this.port}`);
+		this.logger.log(`[Server] Server success started on http://localhost:${this.port}`);
 	}
 }

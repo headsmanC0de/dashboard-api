@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 
+import { KEYS } from '@constants';
 import { UserLoginDto, UserRegisterDto } from '@dto';
 import { HTTPError } from '@errors';
 import { ValidateMiddleware } from '@middleware';
 import { ILogger } from '@service';
-import { KEYS } from '@types';
 
 import { BaseController } from '../BaseController';
 import { UserService } from './../../service/users/user.service';

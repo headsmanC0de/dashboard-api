@@ -2,19 +2,27 @@ import 'module-alias/register';
 
 import { Container, ContainerModule, interfaces } from 'inversify';
 
+import { KEYS } from '@constants';
 import { IBootstrapReturn } from '@interface';
-import { KEYS } from '@types';
 
 import { App } from './app';
 import { IUsersController, UsersController } from './controllers';
 import { ExeptionFilter, IExceptionFilter } from './errors';
-import { ILogger, IUserService, LoggerService, UserService } from './service';
+import {
+	ConfigService,
+	IConfigService,
+	ILogger,
+	IUserService,
+	LoggerService,
+	UserService,
+} from './service';
 
 export const appBinding = new ContainerModule((bind: interfaces.Bind) => {
-	bind<ILogger>(KEYS.ILogger).to(LoggerService);
-	bind<IExceptionFilter>(KEYS.ExceptionFilter).to(ExeptionFilter);
-	bind<IUsersController>(KEYS.UsersController).to(UsersController);
-	bind<IUserService>(KEYS.UsersService).to(UserService);
+	bind<ILogger>(KEYS.ILogger).to(LoggerService).inSingletonScope();
+	bind<IExceptionFilter>(KEYS.ExceptionFilter).to(ExeptionFilter).inSingletonScope();
+	bind<IUsersController>(KEYS.UsersController).to(UsersController).inSingletonScope();
+	bind<IUserService>(KEYS.UsersService).to(UserService).inSingletonScope();
+	bind<IConfigService>(KEYS.ConfigService).to(ConfigService).inSingletonScope();
 	bind<App>(KEYS.Application).to(App);
 });
 

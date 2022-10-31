@@ -1,20 +1,21 @@
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
 
+import { KEYS } from '@constants';
 import { UserLoginDto, UserRegisterDto } from '@dto';
 import { User } from '@entity';
 
+import { ConfigService } from './../config/config.service';
 import { IUserService } from './user.service.interface';
 
 @injectable()
 export class UserService implements IUserService {
+	constructor(@inject(KEYS.ConfigService) private configService: ConfigService) {}
+
 	async createUser({ name, email, password }: UserRegisterDto): Promise<User | null> {
 		const newUser = new User(email, name);
-		await newUser.setPassword(password);
-		/*
-			Перевірка чи є юзер
-			Якщо є повертаємо нулл
-			Якщо ні створюємо
-		*/
+		const salt = this.configService.get('SALT');
+
+		await newUser.setPassword(password, Number(salt));
 
 		return null;
 	}

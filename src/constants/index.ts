@@ -4,6 +4,5 @@ export const KEYS = {
 	UsersController: Symbol.for('UsersController'),
 	UsersService: Symbol.for('UsersService'),
 	ExceptionFilter: Symbol.for('ExeptionFilter'),
+	ConfigService: Symbol.for('ConfigService'),
 };
-
-//TODO: Переробити на константи
