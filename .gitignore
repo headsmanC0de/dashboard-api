@@ -3,3 +3,4 @@
 /.clinic
 /.env
 /prisma/database
+/prisma/migrations

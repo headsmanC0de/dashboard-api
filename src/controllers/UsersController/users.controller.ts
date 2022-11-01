@@ -1,21 +1,23 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
+import { sign } from 'jsonwebtoken';
 
 import { KEYS } from '@constants';
 import { UserLoginDto, UserRegisterDto } from '@dto';
 import { HTTPError } from '@errors';
+import { AuthGuard } from '@guards';
 import { ValidateMiddleware } from '@middleware';
-import { ILogger } from '@service';
+import { IConfigService, ILogger, IUserService } from '@service';
 
 import { BaseController } from '../BaseController';
-import { UserService } from './../../service/users/user.service';
 import { IUsersController } from './users.controller.interface';
 
 @injectable()
 export class UsersController extends BaseController implements IUsersController {
 	constructor(
 		@inject(KEYS.ILogger) logger: ILogger,
-		@inject(KEYS.UsersService) private userService: UserService,
+		@inject(KEYS.UsersService) private userService: IUserService,
+		@inject(KEYS.ConfigService) private configService: IConfigService,
 	) {
 		super(logger);
 
@@ -31,6 +33,12 @@ export class UsersController extends BaseController implements IUsersController 
 				method: 'post',
 				handler: this.register,
 				middlewares: [new ValidateMiddleware(UserLoginDto)],
+			},
+			{
+				path: '/info',
+				method: 'get',
+				handler: this.info,
+				middlewares: [new AuthGuard()],
 			},
 		]);
 	}
@@ -59,6 +67,32 @@ export class UsersController extends BaseController implements IUsersController 
 		if (!result) {
 			return next(new HTTPError(409, 'Such a user already exists'));
 		}
-		this.ok(res, { email: result.email, id: result.id });
+		const jwt = await this.signJWT(body.email, this.configService.get('SECRET'));
+		this.ok(res, { jwt });
+	}
+
+	async info({ user }: Request, res: Response, next: NextFunction): Promise<void> {
+		this.ok(res, { email: user });
+	}
+
+	private signJWT(email: string, secret: string): Promise<string> {
+		return new Promise<string>((resolve, reject) => {
+			sign(
+				{
+					email,
+					iat: Math.floor(Date.now() / 1000),
+				},
+				secret,
+				{
+					algorithm: 'HS256',
+				},
+				(err, token) => {
+					if (err) {
+						reject(err);
+					}
+					resolve(token as string);
+				},
+			);
+		});
 	}
 }

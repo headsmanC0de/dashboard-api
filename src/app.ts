@@ -8,6 +8,7 @@ import { inject, injectable } from 'inversify';
 import { KEYS } from '@constants';
 import { IUsersController, UsersController } from '@controllers';
 import { IExceptionFilter } from '@errors';
+import { AuthMiddleware } from '@middleware';
 import { IConfigService, ILogger, PrismaService } from '@service';
 
 @injectable()
@@ -29,6 +30,8 @@ export class App {
 
 	useMiddleware(): void {
 		this.app.use(json());
+		const authMiddleware = new AuthMiddleware(this.configService.get('SECRET'));
+		this.app.use(authMiddleware.execute.bind(authMiddleware));
 	}
 
 	useRoutes(): void {

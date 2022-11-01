@@ -109,7 +109,8 @@
 			"@repository": ["repository/index.ts"],
 			"@constants": ["constants/index.ts"],
 			"@dto": ["dto/index.ts"],
-			"@middleware": ["middleware/index.ts"]
+			"@middleware": ["middleware/index.ts"],
+			"@guards": ["guards/index.ts"]
 		}
 	}
 }
