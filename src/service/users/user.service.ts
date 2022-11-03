@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 
 import { KEYS } from '@constants';
-import { UserLoginDto, UserRegisterDto } from '@dto';
+import type { UserLoginDto, UserRegisterDto } from '@dto';
 import { User } from '@entity';
-import { UserModel } from '@prisma/client';
-import { IUsersRepository } from '@repository';
-import { IConfigService } from '@service';
+import type { UserModel } from '@prisma/client';
+import type { IUsersRepository } from '@repository';
+import type { IConfigService } from '@service';
 
-import { IUserService } from './user.service.interface';
+import type { IUserService } from './user.service.interface';
 
 @injectable()
 export class UserService implements IUserService {

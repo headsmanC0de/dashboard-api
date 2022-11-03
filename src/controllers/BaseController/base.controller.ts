@@ -1,8 +1,8 @@
 import { Response, Router } from 'express';
 import { injectable } from 'inversify';
 
-import { IControllerRoute } from '../../interface';
-import { ILogger } from '../../service';
+import type { IControllerRoute } from '../../interface';
+import type { ILogger } from '../../service';
 
 @injectable()
 export abstract class BaseController {

@@ -2,12 +2,12 @@ import 'reflect-metadata';
 
 import { json } from 'body-parser';
 import express, { Express } from 'express';
-import { Server } from 'http';
+import type { Server } from 'http';
 import { inject, injectable } from 'inversify';
 
 import { KEYS } from '@constants';
-import { IUsersController, UsersController } from '@controllers';
-import { IExceptionFilter } from '@errors';
+import type { IUsersController } from '@controllers';
+import type { IExceptionFilter } from '@errors';
 import { AuthMiddleware } from '@middleware';
 import { IConfigService, ILogger, PrismaService } from '@service';
 

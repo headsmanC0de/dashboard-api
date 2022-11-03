@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 
 import { KEYS } from '@constants';
 import { HTTPError, IExceptionFilter } from '@errors';
-import { ILogger } from '@service';
+import type { ILogger } from '@service';
 
 @injectable()
 export class ExeptionFilter implements IExceptionFilter {

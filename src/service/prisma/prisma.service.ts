@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify';
 
 import { KEYS } from '@constants';
 import { PrismaClient } from '@prisma/client';
-import { ILogger } from '@service';
+import type { ILogger } from '@service';
 
 @injectable()
 export class PrismaService {

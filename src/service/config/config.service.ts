@@ -2,9 +2,9 @@ import { DotenvConfigOutput, DotenvParseOutput, config } from 'dotenv';
 import { inject, injectable } from 'inversify';
 
 import { KEYS } from '@constants';
-import { ILogger } from '@service';
+import type { ILogger } from '@service';
 
-import { IConfigService } from './config.service.interface';
+import type { IConfigService } from './config.service.interface';
 
 @injectable()
 export class ConfigService implements IConfigService {

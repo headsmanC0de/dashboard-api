@@ -3,7 +3,7 @@ import 'module-alias/register';
 import { Container, ContainerModule, interfaces } from 'inversify';
 
 import { KEYS } from '@constants';
-import { IBootstrapReturn } from '@interface';
+import type { IBootstrapReturn } from '@interface';
 
 import { App } from './app';
 import { IUsersController, UsersController } from './controllers';

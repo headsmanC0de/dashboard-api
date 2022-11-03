@@ -1,6 +1,6 @@
-import { BaseController } from 'controllers/BaseController';
+import type { BaseController } from 'controllers/BaseController';
 
-import { ControllerRouteHandler } from '@interface';
+import type { ControllerRouteHandler } from '@interface';
 
 export interface IUsersController extends BaseController {
 	login: ControllerRouteHandler;

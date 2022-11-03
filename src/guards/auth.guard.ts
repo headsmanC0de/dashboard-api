@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 
-import { IMiddleware } from '@interface';
+import type { IMiddleware } from '@interface';
 
 export class AuthGuard implements IMiddleware {
 	execute(req: Request, res: Response, next: NextFunction): void {

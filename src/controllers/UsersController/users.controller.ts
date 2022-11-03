@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { sign } from 'jsonwebtoken';
 
@@ -7,10 +7,10 @@ import { UserLoginDto, UserRegisterDto } from '@dto';
 import { HTTPError } from '@errors';
 import { AuthGuard } from '@guards';
 import { ValidateMiddleware } from '@middleware';
-import { IConfigService, ILogger, IUserService } from '@service';
+import type { IConfigService, ILogger, IUserService } from '@service';
 
 import { BaseController } from '../BaseController';
-import { IUsersController } from './users.controller.interface';
+import type { IUsersController } from './users.controller.interface';
 
 @injectable()
 export class UsersController extends BaseController implements IUsersController {

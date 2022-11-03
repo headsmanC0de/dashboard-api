@@ -1,6 +1,6 @@
-import { Container } from 'inversify';
+import type { Container } from 'inversify';
 
-import { App } from './../app';
+import type { App } from './../app';
 
 export interface IBootstrapReturn {
 	appContainer: Container;
